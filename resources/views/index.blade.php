@@ -1,12 +1,14 @@
 <x-layout>
     <x-slot:heading>Welcome</x-slot:heading>
+    @guest
     <div>
-    <x-button href="/login">
+    <x-button-long href="/login">
         Login
-    </x-button>
+    </x-button-long>
 </div><div class="mt-5">
-    <x-button href="/register">
+    <x-button-long href="/register">
         Register
-    </x-button>
+    </x-button-long>
     </div>
+    @endguest
 </x-layout>

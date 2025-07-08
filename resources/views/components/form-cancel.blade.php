@@ -1,0 +1,1 @@
+<a {{ $attributes }} class="text-sm font-semibold leading-6 text-gray-900 rounded-md bg-gray-200 px-3 py-2 hover:bg-gray-300">Cancel</a>
