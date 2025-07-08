@@ -9,19 +9,19 @@
             <x-form-field class="col-span-3">
               <x-form-label for="firstName">First name</x-form-label>
               <div class="mt-2">
-                <x-form-input type="text" name="firstName" id="firstName" required placeholder="Your first name"/>
+                <x-form-input type="text" name="firstName" id="firstName" required placeholder="Your first name" :value="old('firstName')"/>
               </div>
             </x-form-field>
             <x-form-field class="col-span-3">
               <x-form-label for="lastName">Last name</x-form-label>
               <div class="mt-2">
-                <x-form-input type="text" name="lastName" id="lastName" required placeholder="Your last name"/>
+                <x-form-input type="text" name="lastName" id="lastName" required placeholder="Your last name" :value="old('lastName')"/>
               </div>
             </x-form-field>
             <x-form-field class="col-span-6">
               <x-form-label for="email">Email</x-form-label>
               <div class="mt-2">
-                <x-form-input type="email" name="email" id="email" required placeholder="Your email"/>
+                <x-form-input type="email" name="email" id="email" required placeholder="Your email" :value="old('email')"/>
               </div>
             </x-form-field>
             <x-form-field class="col-span-3">
@@ -39,13 +39,13 @@
             <x-form-field class="col-span-3">
               <x-form-label for="address">Address</x-form-label>
               <div class="mt-2">
-                <x-form-input type="text" name="address" id="address" placeholder="Your address"/>
+                <x-form-input type="text" name="address" id="address" placeholder="Your address" :value="old('address')"/>
               </div>
             </x-form-field>
             <x-form-field class="col-span-3">
               <x-form-label for="phone">Phone number</x-form-label>
               <div class="mt-2">
-                <x-form-input type="phone" name="phone" id="phone" placeholder="Your phone number"/>
+                <x-form-input type="phone" name="phone" id="phone" placeholder="Your phone number" :value="old('phone')"/>
               </div>
             </x-form-field>
           </div>

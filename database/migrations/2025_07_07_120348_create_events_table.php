@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('type');
             $table->string('description');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
         });
     }
 

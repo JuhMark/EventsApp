@@ -9,7 +9,7 @@
             <x-form-field class="col-span-6">
               <x-form-label for="email">Email</x-form-label>
               <div class="mt-2">
-                <x-form-input type="email" name="email" id="email" required placeholder="Your email"/>
+                <x-form-input type="email" name="email" id="email" required placeholder="Your email" :value="old('email')"/>
               </div>
             </x-form-field>
             <x-form-field class="col-span-6">

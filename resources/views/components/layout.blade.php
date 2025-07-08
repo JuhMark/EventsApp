@@ -39,7 +39,8 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               @auth
-                <!--Menu-->
+                <x-nav-link-desktop href="/dashboard" :active="request()->is('/dashboard')">Your dashboard</x-nav-link-desktop>
+                <x-nav-link-desktop href="/events" :active="request()->is('/events')">Browse events</x-nav-link-desktop>
               @endauth
             </div>
           </div>
@@ -65,9 +66,8 @@
                 </button>
               </div>
               <div id="account-menu" class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-hidden" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                <x-dropdownitem href="#" id="user-menu-item-0" :active="request()->is('#')">Your Profile</x-dropdownitem>
-                <x-dropdownitem href="#" id="user-menu-item-1" :active="request()->is('#')">Settings</x-dropdownitem>
-                <x-dropdownitem href="#" id="user-menu-item-2" :active="request()->is('#')">Sign out</x-dropdownitem>
+                <x-dropdownitem href="/profile" id="user-menu-item-0" :active="request()->is('/profile')">Your Profile</x-dropdownitem>
+                <x-dropdownitem href="/logout" id="user-menu-item-2" :active="request()->is('/logout')">Sign out</x-dropdownitem>
               </div>
         </div>
         @endauth
@@ -76,7 +76,8 @@
     @auth
     <div class="md:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-        <!--Mobile menu-->
+        <x-nav-link-mobile href="/dashboard" :active="request()->is('/dashboard')">Your dashboard</x-nav-link-mobile>
+        <x-nav-link-mobile href="/events" :active="request()->is('/events')">Browse events</x-nav-link-mobile>
       </div>
       <div class="border-t border-gray-700 pt-4 pb-3">
         <div class="flex items-center px-5">
@@ -84,14 +85,13 @@
             <img class="size-10 rounded-full" src="https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0=" alt="" />
           </div>
           <div class="ml-3">
-            <div class="text-base/5 font-medium text-white">John Doe</div>
-            <div class="text-sm font-medium text-gray-400">asd@asd.com</div>
+            <div class="text-base/5 font-medium text-white">{{auth()->user()->firstName." ".auth()->user()->lastName}}</div>
+            <div class="text-sm font-medium text-gray-400">{{auth()->user()->email}}</div>
           </div>
         </div>
         <div class="mt-3 space-y-1 px-2">
-          <x-nav-link-mobile href="#" :active="request()->is('#')">Your Profile</x-nav-link-mobile>
-          <x-nav-link-mobile href="#" :active="request()->is('#')">Settings</x-nav-link-mobile>
-          <x-nav-link-mobile href="#" :active="request()->is('#')">Sign out</x-nav-link-mobile>
+          <x-nav-link-mobile href="/profile" :active="request()->is('/profile')">Your Profile</x-nav-link-mobile>
+          <x-nav-link-mobile href="/logout" :active="request()->is('/logout')">Sign out</x-nav-link-mobile>
         </div>
       </div>
     </div>
