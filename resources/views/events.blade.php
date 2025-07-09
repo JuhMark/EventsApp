@@ -1,7 +1,6 @@
 <x-layout>
-    <x-slot:heading>Events from other users</x-slot:heading>
+    <x-slot:heading>Events you're not subscribed to</x-slot:heading>
     @if(!$events->isEmpty())
-    <div class="align-middle justify-items-center"><h1 class="text-3xl">Events</h1></div>
     <div class="mt-5 mb-5 align-middle justify-items-center">
         <table>
             <tr class="border-b-4">

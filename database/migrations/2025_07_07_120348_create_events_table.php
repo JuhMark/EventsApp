@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('name');
             $table->dateTime('dateTime');
             $table->string('location');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('type');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
         });
     }
