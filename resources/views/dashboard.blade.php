@@ -1,6 +1,11 @@
 <x-layout>
     <x-slot:heading>Dashboard</x-slot:heading>
     @if(!$subscribers->isEmpty())
+    <?php
+        $subscribers = $subscribers->sortBy(function ($subscriber){
+            return $subscriber->event->dateTime;
+        });
+    ?>
     <div class="align-middle justify-items-center"><h1 class="text-3xl">Subscribed events</h1></div>
     <div class="mt-5 mb-5 align-middle justify-items-center">
         <table>

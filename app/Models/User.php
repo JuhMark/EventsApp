@@ -51,7 +51,7 @@ class User extends Authenticatable
     public $timestamps = false;
 
     public function events(){
-        return $this->hasMany(Event::class);
+        return $this->hasMany(Event::class)->orderBy('dateTime');
     }
 
     public function subscribedEvents(){
@@ -61,6 +61,6 @@ class User extends Authenticatable
     public function notSubscribedEvents(){
         $ids = Subscriber::where('user_id',Auth::user()->id)->pluck('event_id')->toArray();
         $events = Event::all()->whereNotIn('id',$ids);
-        return $events;
+        return $events->sortBy('dateTime');
     }
 }
