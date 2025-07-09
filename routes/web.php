@@ -17,6 +17,8 @@ Route::get('/dashboard',[SubscriberController::class,'showSubscribed'])->middlew
 Route::get('/subscriptions/{id}',[SubscriberController::class,'promptUnsubscribe'])->middleware('auth');
 Route::delete('/subscriptions/{id}',[SubscriberController::class,'destroy'])->middleware('auth');
 Route::get('/events/{id}',[EventController::class,'show'])->middleware('auth');
+Route::get('/events/delete/{id}',[EventController::class,'promptDelete'])->middleware('auth');
+Route::delete('/events/delete/{id}',[EventController::class,'destroy'])->middleware('auth');
 Route::get('/events',[SubscriberController::class,'showNotSubscribed'])->middleware('auth');
 Route::get('/events/subscribe/{id}',[SubscriberController::class,'create'])->middleware('auth');
 Route::post('/events/subscribe/{id}',[SubscriberController::class,'store'])->middleware('auth');
