@@ -28,6 +28,9 @@ class SessionController extends Controller
             throw ValidationException::withMessages(["Incorrect email or password!"]);
         }
     }
+    public function promptLogout(){
+        return view('logout');
+    }
     public function destroy(){
         Auth::logout();
         return redirect('/');
