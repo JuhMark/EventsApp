@@ -14,7 +14,7 @@ class SubscriberController extends Controller
         return view('dashboard',['subscribers' => Auth::user()->subscribedEvents,'events' => Auth::user()->events]);
     }
     public function showNotSubscribed(){
-        return view('events',['subscribers' => Auth::user()->notSubscribedEvents]);
+        return view('events',['events' => Auth::user()->notSubscribedEvents()]);
     }
     public function promptUnsubscribe($id){
         $subscriber = Subscriber::find($id);
@@ -29,6 +29,26 @@ class SubscriberController extends Controller
         if($subscriber){
             $subscriber->delete();
             return redirect('/dashboard');
+        }else{
+            abort(404);
+        }
+    }
+    public function create($id){
+        $event = Event::find($id);
+        if($event){
+            return view('subscribe',['event'=> $event]);
+        }else{
+            abort(404);
+        }
+    }
+    public function store($id){
+        $event = Event::find($id);
+        if($event){
+            Subscriber::create([
+                'user_id' => Auth::user()->id,
+                'event_id'=> $id,
+            ]);
+            return redirect('/events');
         }else{
             abort(404);
         }

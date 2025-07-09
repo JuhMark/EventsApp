@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -58,6 +59,8 @@ class User extends Authenticatable
     }
 
     public function notSubscribedEvents(){
-        return Subscriber::where('user_id','<>', $this->id);
+        $ids = Subscriber::where('user_id',Auth::user()->id)->pluck('event_id')->toArray();
+        $events = Event::all()->where('user_id','<>',Auth::user()->id)->whereNotIn('id',$ids);
+        return $events;
     }
 }
