@@ -39,8 +39,8 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               @auth
-                <x-nav-link-desktop href="/dashboard" :active="request()->is('/dashboard')">Your dashboard</x-nav-link-desktop>
-                <x-nav-link-desktop href="/events" :active="request()->is('/events')">Browse events</x-nav-link-desktop>
+                <x-nav-link-desktop href="/dashboard" :active="request()->is('dashboard')">Your dashboard</x-nav-link-desktop>
+                <x-nav-link-desktop href="/events" :active="request()->is('events')">Browse events</x-nav-link-desktop>
               @endauth
             </div>
           </div>
@@ -66,8 +66,8 @@
                 </button>
               </div>
               <div id="account-menu" class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-hidden" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                <x-dropdownitem href="/profile" id="user-menu-item-0" :active="request()->is('/profile')">Your Profile</x-dropdownitem>
-                <x-dropdownitem href="/logout" id="user-menu-item-2" :active="request()->is('/logout')">Sign out</x-dropdownitem>
+                <x-dropdownitem href="/profile" id="user-menu-item-0" :active="request()->is('profile')">Your Profile</x-dropdownitem>
+                <x-dropdownitem href="/logout" id="user-menu-item-2" :active="request()->is('logout')">Sign out</x-dropdownitem>
               </div>
         </div>
         @endauth
@@ -90,8 +90,8 @@
           </div>
         </div>
         <div class="mt-3 space-y-1 px-2">
-          <x-nav-link-mobile href="/profile" :active="request()->is('/profile')">Your Profile</x-nav-link-mobile>
-          <x-nav-link-mobile href="/logout" :active="request()->is('/logout')">Sign out</x-nav-link-mobile>
+          <x-nav-link-mobile href="/profile" :active="request()->is('profile')">Your Profile</x-nav-link-mobile>
+          <x-nav-link-mobile href="/logout" :active="request()->is('logout')">Sign out</x-nav-link-mobile>
         </div>
       </div>
     </div>

@@ -48,4 +48,12 @@ class User extends Authenticatable
     }
 
     public $timestamps = false;
+
+    public function ownEvents(){
+        return $this->hasMany(Event::class);
+    }
+
+    public function subscribedEvents(){
+        return $this->hasMany(Subscriber::class);
+    }
 }
