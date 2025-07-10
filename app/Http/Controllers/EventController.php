@@ -28,6 +28,7 @@ class EventController extends Controller
     public function destroy($id){
         $event = Event::find($id);
         if($event){
+            @unlink(public_path($event->image));
             $event->delete();
             return redirect('/dashboard');
         }else{
