@@ -17,4 +17,10 @@ class EventPolicy
         $subscriber = Subscriber::where("user_id", $user->id)->where("event_id", $event)->first();
         return $subscriber == null;
     }
+    public function show(User $user, string $event){
+        $event = Event::find($event);
+        if($event->private && $event->user->is($user)) return true;
+        else if ($event->private && $event->user->isNot($user)) return false;
+        else return true;
+    }
 }

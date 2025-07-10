@@ -42,11 +42,25 @@
                 :value=" $event->description " />
             </div>
           </x-form-field>
-          <x-form-field class="col-span-6">
+          <x-form-field class="col-span-3">
             <x-form-label for="image">Image</x-form-label>
             <div class="mt-2">
               <x-form-input type="file" name="image" id="image" placeholder="Picture of the event"
               :value="asset($event->image)"/>
+            </div>
+          </x-form-field>
+          <x-form-field class="col-span-3">
+            <x-form-label for="private">Visibility</x-form-label>
+            <div class="mt-2">
+              <x-form-select name="private" id="private">
+                @if($event->private)
+                <option value="true" selected>Private</option>
+                <option value="false">Public</option>
+                @else
+                <option value="true">Private</option>
+                <option value="false" selected>Public</option>
+                @endif
+              </x-form-select>
             </div>
           </x-form-field>
         </div>

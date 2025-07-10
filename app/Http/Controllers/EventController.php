@@ -45,6 +45,7 @@ class EventController extends Controller
             'type' => ['required','max:100'],
             'description' => ['max:200'],
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'private' => 'in:false,true',
         ]);
         if(request()->image){
             $imageName = time().'.'.request()->image->extension();
@@ -57,6 +58,7 @@ class EventController extends Controller
                 'description'=> request()->description,
                 'image'=> 'images/'.$imageName,
                 'user_id' => auth()->user()->id,
+                'private' => (request()->private  == "true" ? true : false),
             ]);
         } else {
             Event::create([
@@ -66,6 +68,7 @@ class EventController extends Controller
                 'type'=> request()->type,
                 'description'=> request()->description,
                 'user_id' => auth()->user()->id,
+                'private' => (request()->private == "true" ? true : false),
             ]);
         }
         Subscriber::create([
@@ -92,6 +95,7 @@ class EventController extends Controller
             'type' => ['required','max:100'],
             'description' => ['max:200'],
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'private' => 'in:false,true',
             ]);
 
             if(request()->image){
@@ -104,6 +108,7 @@ class EventController extends Controller
                     'type'=> request()->type,
                     'description'=> request()->description,
                     'image'=> 'images/'.$imageName,
+                    'private' => (request()->private  == "true" ? true : false),
                 ]);
         }else {
             $event->update([
@@ -112,6 +117,7 @@ class EventController extends Controller
                 'location'=> request()->location,
                 'type'=> request()->type,
                 'description'=> request()->description,
+                'private' => (request()->private  == "true" ? true : false),
             ]);
         }
         return redirect('/events/'. $event->id);

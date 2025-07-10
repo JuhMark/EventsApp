@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('type');
             $table->string('description')->nullable();
+            $table->boolean('private')->default(true);
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
         });
     }

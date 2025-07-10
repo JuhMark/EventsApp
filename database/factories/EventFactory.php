@@ -24,6 +24,7 @@ class EventFactory extends Factory
             'location' => fake()->city(),
             'type' => fake()->word(),
             'description' => fake()->text(200),
+            'private' => false,
             'user_id' => User::factory(),
         ];
     }

@@ -8,6 +8,7 @@
         @endif
         <li class="mb-1 mt-1">Type: {{$event->type}}</li>
         <li class="mb-1 mt-1">Description: {{$event->description ? $event->description : "Not provided"}}</li>
+        <li class="mb-1 mt-1">Visibility: {{$event->private ? "Private" : "Public"}}</li>
     </x-list>
     @can('belongs',$event->id)
     <div>

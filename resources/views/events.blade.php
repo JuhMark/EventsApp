@@ -1,6 +1,10 @@
 <x-layout>
     <x-slot:heading>Events you're not subscribed to</x-slot:heading>
     @if(!$events->isEmpty())
+
+    <form method="post" action="/events">
+        
+    </form>
     <div class="mt-5 mb-5 align-middle justify-items-center">
         <table>
             <tr class="border-b-4">

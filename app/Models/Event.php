@@ -18,6 +18,7 @@ class Event extends Model
         'type',
         'description',
         'user_id',
+        'private',
     ];
     public $timestamps = false;
 

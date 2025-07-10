@@ -60,7 +60,10 @@ class User extends Authenticatable
 
     public function notSubscribedEvents(){
         $ids = Subscriber::where('user_id',Auth::user()->id)->pluck('event_id')->toArray();
-        $events = Event::all()->whereNotIn('id',$ids);
+        $events = Event::whereNotIn('id',$ids)
+        ->where('private',false)
+        ->orWhere('user_id',Auth()->user()->id)
+        ->get();
         return $events->sortBy('dateTime');
     }
 }
