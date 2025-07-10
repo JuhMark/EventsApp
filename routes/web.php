@@ -35,6 +35,7 @@ Route::delete('/events/delete/{event}',[EventController::class,'destroy'])
 ->middleware('auth')
 ->can('belongs','event');
 Route::get('/events',[SubscriberController::class,'showNotSubscribed'])->middleware('auth');
+Route::post('/events',[SubscriberController::class,'search'])->middleware('auth');
 Route::get('/events/subscribe/{event}',[SubscriberController::class,'create'])
 ->middleware('auth')
 ->can('notSubscribed','event')

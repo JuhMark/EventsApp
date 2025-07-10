@@ -4,7 +4,7 @@
         <h1 class="text-2xl">Are you sure you want to subscribe to this event?</h1>
     </div>
     <div class="mt-5">
-    <x-button-long href="/dashboard">No</x-button-long>
+    <x-button-long href="/events">No</x-button-long>
     </div>
     <form method="POST" action="/events/subscribe/{{ $event->id }}" class="mt-5">
     @csrf

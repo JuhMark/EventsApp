@@ -14,7 +14,19 @@ class SubscriberController extends Controller
         return view('dashboard',['subscribers' => Auth::user()->subscribedEvents,'events' => Auth::user()->events]);
     }
     public function showNotSubscribed(){
-        return view('events',['events' => Auth::user()->notSubscribedEvents()]);
+        return view('events',['events' => Auth::user()->notSubscribedEvents(),'location' => '','type' => '','dateFrom' => '','dateTo' => '']);
+    }
+    public function search(){
+        $events = Auth::user()->notSubscribedEvents();
+        $location = request()->location;
+        $type = request()->type;
+        $dateFrom = request()->dateFrom;
+        $dateTo = request()->dateTo;
+        if($location) $events = $events->where('location',$location);
+        if($type) $events = $events->where('type',$type);
+        if($dateFrom) $events = $events->where('dateTime','>', $dateFrom);
+        if($dateTo) $events = $events->where('dateTime','<', $dateTo);
+        return view('events',['events' => $events,'location' => $location,'type'=> $type,'dateFrom' => $dateFrom,'dateTo' => $dateTo]);
     }
     public function promptUnsubscribe($id){
         $subscriber = Subscriber::find($id);
