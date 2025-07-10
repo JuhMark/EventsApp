@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -18,9 +19,12 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'firstName',
+        'lastName',
         'email',
         'password',
+        'phone',
+        'address',
     ];
 
     /**
@@ -30,7 +34,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
@@ -41,8 +44,26 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public $timestamps = false;
+
+    public function events(){
+        return $this->hasMany(Event::class)->orderBy('dateTime');
+    }
+
+    public function subscribedEvents(){
+        return $this->hasMany(Subscriber::class);
+    }
+
+    public function notSubscribedEvents(){
+        $ids = Subscriber::where('user_id',Auth::user()->id)->pluck('event_id')->toArray();
+        $events = Event::whereNotIn('id',$ids)
+        ->where('private',false)
+        ->orWhere('user_id',Auth()->user()->id)
+        ->get();
+        return $events->sortBy('dateTime');
     }
 }
